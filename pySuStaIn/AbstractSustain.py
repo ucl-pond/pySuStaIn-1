@@ -377,7 +377,7 @@ class AbstractSustain(ABC):
             ST1BIC=BIC(train_log_likehood[:,0:s],s*nStages)
             ST2BIC=BIC(train_log_likehood[:,0:s+1],(s+1)*nStages)
             w, p = stats.ttest_rel(ST1BIC,ST2BIC)
-            print(f't-test between BIC of subtype{s} and subtype{s+1} is {w, p}')
+            print(f't-test between BIC of models with upto subtype{s} and upto subtype{s+1} is {w, p}')
 
 
 
