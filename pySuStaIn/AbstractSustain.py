@@ -374,10 +374,10 @@ class AbstractSustain(ABC):
         nStages                             = len(ml_sequence_EM)
 
         for s in range(self.N_S_max):
-            ST1BIC=BIC(train_log_likehood[:,0:s],s*nStages)
-            ST2BIC=BIC(train_log_likehood[:,0:s+1],(s+1)*nStages)
+            ST1BIC=BIC(loglike_matrix_train[:,0:s+1],(s+1)*nStages)
+            ST2BIC=BIC(loglike_matrix_train[:,s+1:s+2],(s+2)*nStages)
             w, p = stats.ttest_rel(ST1BIC,ST2BIC)
-            print(f't-test between BIC of models with upto subtype{s} and upto subtype{s+1} is {w, p}')
+            print(f't-test between BIC of models with upto subtype{s} and subtype{s+1} is: t={w[0]:.3f} , p-val={p[0]:.8f}')
 
 
 
