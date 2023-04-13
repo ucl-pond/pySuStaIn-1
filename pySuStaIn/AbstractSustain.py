@@ -373,7 +373,7 @@ class AbstractSustain(ABC):
         
         nStages                             = len(ml_sequence_EM)
 
-        for s in range(self.N_S_max):
+        for s in range(self.N_S_max-1):
             ST1BIC=BIC(loglike_matrix_train[:,0:s+1],(s+1)*nStages)
             ST2BIC=BIC(loglike_matrix_train[:,s+1:s+2],(s+2)*nStages)
             w, p = stats.ttest_rel(ST1BIC,ST2BIC)
